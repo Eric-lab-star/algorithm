@@ -6,28 +6,26 @@ import java.util.Arrays;
  * binary
  */
 public class Binary {
-  public static int[] number = {1, 2, 3, 4, 5};
-  public static int[] numbers = {1, 2};
-  public void print() {
-    System.out.println("this is binary");
-  }
-
-  public static int run(int key) {
+  public static int[] numbers = {1, 2, 3, 4, 5, 6};
+  public static void search(int key) {
     int pl = 0;
-    int pr = Binary.number.length - 1;
-
+    int pr = numbers.length - 1;
     do {
       int pc = (pl + pr) / 2;
-      if (number[pc] == key) {
-        return pc;
-      } else if (key < number[pc]) {
-        pr = pc - 1;
-      } else {
+      if (numbers[pc] == key) {
+        System.out.println(pc);
+        return;
+      } else if (numbers[pc] < key) {
         pl = pc + 1;
+      } else {
+        pr = pc - 1;
       }
-
     } while (pl <= pr);
+    System.out.println("not found");
+  }
 
-    return -1;
+  public static void search2(int key) {
+    int res = Arrays.binarySearch(numbers, key);
+    System.out.println(res);
   }
 }
